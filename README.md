@@ -14,7 +14,7 @@ AcousticBench is a benchmark for evaluating how well Large Audio Language Models
 - **Speech Emotion Recognition (SER)**
 - **Relative Speech Quality (RSQ)**
 
-The benchmark draws from 5,800 unique recordings (11.6 hours) collected through single-speaker voice-acting sessions, multi-speaker WebRTC conversations in 17 languages, and synthetic sound generation.
+The benchmark draws from 5,800 clips (11.6 hours) collected through single-speaker voice-acting sessions, multi-speaker WebRTC conversations in 17 languages, and synthetic sound generation.
 
 ## Release Plan
 
