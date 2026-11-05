@@ -1,0 +1,20 @@
+# Mirrors common.base_image() + Qwen2-Audio overrides:
+#   modal.Image.debian_slim(python_version="3.11")
+#     .apt_install("ffmpeg", "git", "libsndfile1")
+#     .pip_install(*COMMON_PIP_PACKAGES,
+#                  "torch==2.4.1", "torchaudio==2.4.1", "transformers==4.52.4")
+#     .pip_install("torch==2.5.1", "torchaudio==2.5.1")
+torch==2.5.1
+torchaudio==2.5.1
+transformers==4.52.4
+accelerate==1.13.0
+librosa==0.11.0
+soundfile==0.13.1
+einops==0.8.0
+pillow==10.4.0
+sentencepiece==0.2.0
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2

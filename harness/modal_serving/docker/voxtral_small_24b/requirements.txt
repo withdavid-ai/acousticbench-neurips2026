@@ -1,0 +1,21 @@
+# Mirrors common.modern_image() + Voxtral extras:
+#   modal.Image.debian_slim(python_version="3.11")
+#     .apt_install("ffmpeg", "git", "libsndfile1")
+#     .pip_install(*COMMON_PIP_PACKAGES,
+#                  "torch==2.11.0", "torchaudio==2.11.0", "transformers==5.3.0")
+#     .pip_install("mistral_common[audio]==1.10.0")
+torch==2.11.0
+torchaudio==2.11.0
+transformers==5.3.0
+accelerate==1.13.0
+librosa==0.11.0
+soundfile==0.13.1
+einops==0.8.2
+pillow==12.2.0
+sentencepiece==0.2.1
+mistral_common[audio]==1.10.0
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2

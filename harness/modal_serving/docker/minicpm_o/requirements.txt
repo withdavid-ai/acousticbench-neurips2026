@@ -1,0 +1,17 @@
+# Mirrors common.base_image() + MiniCPM-o overrides:
+#   modal.Image.debian_slim(python_version="3.11")
+#     .apt_install("ffmpeg", "git", "libsndfile1")
+#     .pip_install(*COMMON_PIP_PACKAGES,
+#                  "torch==2.4.1", "torchaudio==2.4.1", "transformers==4.52.4")
+#     .pip_install("Pillow==10.4.0", "torch==2.8.0", "torchaudio==2.8.0",
+#                  "transformers==4.51.0", "minicpmo-utils[all]==1.0.6")
+transformers==4.51.0
+accelerate==1.13.0
+soundfile==0.13.1
+Pillow==10.4.0
+sentencepiece==0.2.0
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2

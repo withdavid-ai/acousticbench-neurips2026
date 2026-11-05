@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "acousticbench"
+version = "1.0.0"
+description = "AcousticBench: Evaluating audio perception in large audio-language models."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "David AI Labs" },
+]
+requires-python = ">=3.11"
+dependencies = [
+    "huggingface_hub>=0.34.0,<2",
+    "loguru>=0.7.0,<1",
+    "numpy>=2.0.0,<3",
+    "requests>=2.31.0,<3",
+    "python-dotenv>=1.0.0,<2",
+    "tqdm==4.67.1",
+]
+
+[project.optional-dependencies]
+api = [
+    "google-generativeai>=0.8.0,<0.9",
+    "openai>=1.50.0,<3",
+]
+research = [
+    "acousticbench[api,modal]",
+    "jsonlines>=4,<5",
+    "torch>=2.4,<3",
+    "google-genai>=1,<2",
+]
+modal = [
+    "modal>=1.0.0,<2",
+]
+all = [
+    "acousticbench[api,modal]",
+    "librosa>=0.11.0,<1.0",
+    "soundfile>=0.12.1,<1",
+    "torch>=2.4.0,<3",
+]
+dev = [
+    "pytest==9.0.3",
+    "ruff==0.15.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/withdavid-ai/acousticbench-neurips2026"
+Repository = "https://github.com/withdavid-ai/acousticbench-neurips2026"
+Issues = "https://github.com/withdavid-ai/acousticbench-neurips2026/issues"
+Dataset = "https://huggingface.co/datasets/davidai-labs/AcousticBench"
+
+[project.scripts]
+acousticbench = "harness.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["harness", "finetuning", "reproduction"]
+
+[tool.uv]
+# Resolve against the package index as it stood when the reference
+# trajectories were produced (2026-05-01 to 2026-05-07).
+exclude-newer = "2026-05-08T00:00:00Z"

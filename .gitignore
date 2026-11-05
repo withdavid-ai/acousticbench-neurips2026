@@ -1,0 +1,73 @@
+# Dataset and LoRA adapters (download from Hugging Face; see README)
+archive/*
+!archive/.gitkeep
+*.zip
+audio/
+questions/
+schemas/
+checksums/
+provenance/
+audio_files.csv
+dataset-metadata.json
+
+# Results (generated locally)
+results/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Environment and secrets
+.env
+local.env
+.venv/
+
+# Documents (reviewer copies and paper PDFs are never committed)
+*.pdf
+
+# Checkpoints
+.checkpoint_*.jsonl
+
+# Raw CLI output (organized copies live in reference_trajectories/<Model>/<task>/)
+**/raw_responses/
+
+# Trajectory tooling artifacts (logs from rerun scripts, .bak files from in-place rewrites)
+reference_trajectories/_logs/
+**/*.jsonl.bak
+**/*.jsonl.bak.*
+
+# Tables written by scripts/make_paper_tables.py (default --out)
+generated_tables/
+
+# Paper figures are tracked even though *.pdf is ignored above
+!paper/figures/*.pdf
+
+# Original Overleaf export (kept locally for reference; never commit)
+docs/camera-ready/overleaf-original/
+
+# Public-release boundary
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+*.bak
+*.bak.*
+.DS_Store
+.pytest_cache/
+.ruff_cache/
+reproduction/finetuning_lift/data/
+reproduction/finetuning_lift/results/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.wav
+*.mp3
+*.flac
+release-audit/
