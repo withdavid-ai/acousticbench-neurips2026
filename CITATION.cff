@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use AcousticBench, please cite the paper below."
+title: "AcousticBench"
+type: software
+authors:
+  - family-names: Rahul
+    given-names: Anirudh
+  - family-names: Vidyarthi
+    given-names: Arth
+  - family-names: Horgan
+    given-names: Michael
+  - family-names: Jaju
+    given-names: Suyash
+  - family-names: Zhou
+    given-names: Yuhao
+license: MIT
+version: "1.0.0"
+repository-code: "https://github.com/withdavid-ai/acousticbench-neurips2026"
+url: "https://huggingface.co/datasets/davidai-labs/AcousticBench"
+keywords:
+  - audio-language models
+  - benchmark
+  - acoustic perception
+  - speech emotion recognition
+preferred-citation:
+  type: conference-paper
+  title: "AcousticBench: Measuring Acoustic Perception in Large Audio Language Models"
+  authors:
+    - family-names: Rahul
+      given-names: Anirudh
+    - family-names: Vidyarthi
+      given-names: Arth
+    - family-names: Horgan
+      given-names: Michael
+    - family-names: Jaju
+      given-names: Suyash
+    - family-names: Zhou
+      given-names: Yuhao
+  collection-title: "Advances in Neural Information Processing Systems"
+  conference:
+    name: "Conference on Neural Information Processing Systems (NeurIPS 2026)"
+  year: 2026

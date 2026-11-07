@@ -1,0 +1,23 @@
+# Mirrors common.base_image() + Phi-4-Multimodal extras:
+#   modal.Image.debian_slim(python_version="3.11")
+#     .apt_install("ffmpeg", "git", "libsndfile1")
+#     .pip_install(*COMMON_PIP_PACKAGES,
+#                  "torch==2.4.1", "torchaudio==2.4.1", "transformers==4.52.4")
+#     .pip_install("backoff==2.2.1", "peft==0.19.1", "torchvision==0.19.1")
+torch==2.4.1
+torchaudio==2.4.1
+transformers==4.52.4
+accelerate==1.13.0
+librosa==0.11.0
+soundfile==0.13.1
+einops==0.8.2
+pillow==12.2.0
+sentencepiece==0.2.1
+backoff==2.2.1
+peft==0.19.1
+torchvision==0.19.1
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2

@@ -1,0 +1,33 @@
+# Mirrors common.audio_flamingo_image() + AF3 extras:
+#   modal.Image.debian_slim(python_version="3.11")
+#     .apt_install("ffmpeg", "git", "libsndfile1")
+#     .pip_install(*COMMON_PIP_PACKAGES,
+#                  "torch==2.4.1", "torchaudio==2.4.1", "transformers==4.46.0")
+#     .pip_install("torchvision==0.19.1", "hydra-core==1.3.2", "kaldiio==2.18.1",
+#                  "loguru==0.7.3", "opencv-python-headless==4.8.0.76",
+#                  "pydub==0.25.1", "pytorchvideo==0.1.5")
+#
+# The Modal serve file then adds: .pip_install("transformers==5.3.0", "safetensors==0.7.0")
+# which upgrades transformers for native AF3 support.
+torch==2.4.1
+torchaudio==2.4.1
+transformers==5.3.0
+safetensors==0.7.0
+accelerate==1.13.0
+librosa==0.11.0
+soundfile==0.13.1
+einops==0.8.0
+pillow==10.4.0
+sentencepiece==0.2.0
+torchvision==0.19.1
+hydra-core==1.3.2
+kaldiio==2.18.1
+loguru==0.7.3
+opencv-python-headless==4.8.0.76
+pydub==0.25.1
+pytorchvideo==0.1.5
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2

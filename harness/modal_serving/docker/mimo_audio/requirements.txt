@@ -1,0 +1,26 @@
+# Mirrors modal_serving/mimo_audio_serve.py image dependencies:
+#   modal.Image.from_registry("pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel")
+#     .pip_install("accelerate==1.13.0", "torchaudio==2.6.0",
+#                  "transformers==4.49.0", "librosa==0.11.0", ...)
+#     .pip_install("flash-attn==2.7.4.post1")
+# torch already in base image (pytorch/pytorch:2.6.0-cuda12.4-cudnn9-devel)
+# Previously floating requirements are pinned to the latest release on or
+# before 2026-05-07, matching mimo_audio_serve.py.
+torchaudio==2.6.0
+transformers==4.49.0
+accelerate==1.13.0
+librosa==0.11.0
+scipy==1.17.1
+soundfile==0.13.1
+einops==0.8.2
+sentencepiece==0.2.1
+packaging==26.2
+ninja==1.13.0
+wheel==0.47.0
+setuptools==82.0.1
+# flash-attn installed separately in Dockerfile with --no-build-isolation
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2

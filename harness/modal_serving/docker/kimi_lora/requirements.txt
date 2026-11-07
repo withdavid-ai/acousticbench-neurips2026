@@ -1,0 +1,20 @@
+# Mirrors the Modal image for Kimi-Audio LoRA:
+#   modal.Image.from_registry("moonshotai/kimi-audio:v0.1")
+#     .run_commands("python -m pip install --no-deps git+https://github.com/MoonshotAI/Kimi-Audio.git")
+#     .pip_install("peft==0.19.1")
+#
+# The Moonshot base image ships torch, transformers, and Kimi-Audio's core
+# dependencies. We add peft for LoRA adapter loading + the FastAPI shim.
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+
+# LoRA adapter loading. Matches the Modal image that produced the reference
+# trajectories (latest peft on or before 2026-05-07).
+peft==0.19.1
+
+# serving_utils dependencies (pinned for safety; usually present in base)
+librosa==0.11.0
+soundfile==0.13.1

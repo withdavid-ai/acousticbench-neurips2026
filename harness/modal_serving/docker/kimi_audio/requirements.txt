@@ -1,0 +1,16 @@
+# Mirrors the Modal image for Kimi-Audio:
+#   modal.Image.from_registry("moonshotai/kimi-audio:v0.1")
+#     .run_commands("python -m pip install --no-deps git+https://github.com/MoonshotAI/Kimi-Audio.git@<KIMI_AUDIO_GIT_SHA>")
+#
+# The base image (moonshotai/kimi-audio:v0.1) already includes torch, transformers,
+# and Kimi-Audio's core dependencies. We only add the FastAPI shim and ensure
+# serving_utils deps are present.
+
+# FastAPI shim
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+
+# serving_utils dependencies (may already be in base image, but pinning for safety)
+librosa==0.11.0
+soundfile==0.13.1

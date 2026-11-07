@@ -1,0 +1,1824 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "sc": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dct": "http://purl.org/dc/terms/",
+    "arrayShape": "cr:arrayShape",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "containedIn": "cr:containedIn",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isArray": "cr:isArray",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "AcousticBench",
+  "alternateName": [
+    "davidai-labs/AcousticBench",
+    "AcousticBench: Measuring Acoustic Perception in Large Audio Language Models"
+  ],
+  "description": "AcousticBench contains 3,200 two-choice audio questions across relative acoustic discrimination (RAD), speech emotion recognition (SER), and relative speech quality (RSQ). RAD has 1,200 pairs; SER-Classify has 600 single-clip questions; SER-Intensity has 400 pairs; RSQ has 1,000 pairs. The 5,800 audio slots contain 5,355 distinct recordings by SHA-256 and total 11.6 hours counting slots. RAD labels are programmatically controlled; SER is validated and RSQ annotated by audio-only listeners. A separate 600-question transcript-only diagnostic brings the file total to 3,800 rows. Equal question-ID train/eval halves support adaptation experiments; the benchmark leaderboard uses both halves. Native JSONL and WAV files preserve the source archive; Parquet mirrors them for Hugging Face. Access is governed by the included AcousticBench Data Use Agreement and requires manual approval.",
+  "conformsTo": [
+    "http://mlcommons.org/croissant/1.1",
+    "http://mlcommons.org/croissant/RAI/1.0"
+  ],
+  "citeAs": "@inproceedings{acousticbench2026,\n  title = {AcousticBench: Measuring Acoustic Perception in Large Audio Language Models},\n  author = {Rahul, Anirudh and Vidyarthi, Arth and Horgan, Michael and Jaju, Suyash and Zhou, Yuhao},\n  booktitle = {Advances in Neural Information Processing Systems},\n  year = {2026}\n}",
+  "creator": {
+    "@type": "sc:Organization",
+    "name": "David AI Labs",
+    "url": "https://huggingface.co/davidai-labs"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "David AI Labs"
+  },
+  "version": "1.0.0",
+  "license": "https://huggingface.co/datasets/davidai-labs/AcousticBench/blob/main/DATA_USE_AGREEMENT.md",
+  "url": "https://huggingface.co/datasets/davidai-labs/AcousticBench",
+  "usageInfo": "AcousticBench Data Use Agreement, version 1.1 adapted 2026-10-30 from the owner-supplied DAI-ASR-I18N agreement dated 2026-10-02. Permits evaluation, benchmarking, testing and reporting model performance, including commercial models, and non-commercial research. Prohibits training, pre-training, fine-tuning, distillation, reinforcement and validation use, incorporating derivatives into model weights, redistribution and re-identification. The training prohibition is absolute and not available for license. Recipients must delete withdrawn samples and derivatives within 30 days of notice and confirm deletion in writing. Attribution, compliance, access revocation and survival provisions are in DATA_USE_AGREEMENT.md. Released train/eval labels do not grant training rights. Manual access approval is planned. Contact research@withdavid.ai.",
+  "isAccessibleForFree": true,
+  "inLanguage": [
+    "ar",
+    "bn",
+    "en",
+    "fr",
+    "de",
+    "hi",
+    "id",
+    "it",
+    "ja",
+    "ko",
+    "zh",
+    "pt",
+    "ru",
+    "tl",
+    "th",
+    "tr",
+    "vi"
+  ],
+  "keywords": [
+    "audio",
+    "benchmark",
+    "large audio language models",
+    "acoustic perception",
+    "speech emotion recognition",
+    "speech quality",
+    "pitch",
+    "loudness",
+    "multilingual"
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "questions-rad",
+      "name": "questions-rad",
+      "description": "Harness-native question file for rad (source of truth; read by the AcousticBench harness).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/questions/acousticbench_rad.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "6751a0c75395ebef01b5c7803547568696309178896fa838c6b83839f7262606"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "questions-rsq",
+      "name": "questions-rsq",
+      "description": "Harness-native question file for rsq (source of truth; read by the AcousticBench harness).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/questions/acousticbench_rsq.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "ec0d32ac6167623f58960df5f0b82b77d8405be83c5732dfb5047d1bb5a9518e"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "questions-ser_classify",
+      "name": "questions-ser_classify",
+      "description": "Harness-native question file for ser_classify (source of truth; read by the AcousticBench harness).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/questions/acousticbench_ser_classify.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "c439947ba99d98a7d4c597cfd176adab0889f97041ca268ba8a4a25204db607a"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "questions-ser_classify_text",
+      "name": "questions-ser_classify_text",
+      "description": "Harness-native question file for ser_classify_text (source of truth; read by the AcousticBench harness).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/questions/acousticbench_ser_classify_text.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "87be0cf6fa0742138fd1a2501c3e41b75949dccb19521ff0695bd16c8cf51977"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "questions-ser_intensity",
+      "name": "questions-ser_intensity",
+      "description": "Harness-native question file for ser_intensity (source of truth; read by the AcousticBench harness).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/questions/acousticbench_ser_intensity.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "f06cc2ee5fc0ac50720d2d6a0e2d9fcd7a6cd3004189bd6543227aa93a2ab1dc"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "questions-all",
+      "name": "questions-all",
+      "description": "Harness-native question file for all (source of truth; read by the AcousticBench harness).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/questions/acousticbench_all.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "81660b1e67d76b40d7a24b18c962ea7e50352a5906fe8a5a682dcef06e9392ca"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "index-rad",
+      "name": "index-rad",
+      "description": "Flat per-question index for rad derived from questions/acousticbench_rad.jsonl.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/index/rad.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "48d19f5316e1adca5ca23fd6d05752241c6ecd348ae3361110ce0e04708f1cd6"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "index-rsq",
+      "name": "index-rsq",
+      "description": "Flat per-question index for rsq derived from questions/acousticbench_rsq.jsonl.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/index/rsq.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "3ebc0f1d14c295154ae7d1e55e17019be4201fecf6f4414c955f7fe4e83493d2"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "index-ser_classify",
+      "name": "index-ser_classify",
+      "description": "Flat per-question index for ser_classify derived from questions/acousticbench_ser_classify.jsonl.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/index/ser_classify.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "1ffc653da584d93ac32fe904329a96e08144b4d3da132249343ee2f3b02a541c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "index-ser_classify_text",
+      "name": "index-ser_classify_text",
+      "description": "Flat per-question index for ser_classify_text derived from questions/acousticbench_ser_classify_text.jsonl.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/index/ser_classify_text.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "529a4f7956b1a93c9d273c6348bb9b8561ee824526f8191ba889b9a973b6e487"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "index-ser_intensity",
+      "name": "index-ser_intensity",
+      "description": "Flat per-question index for ser_intensity derived from questions/acousticbench_ser_intensity.jsonl.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/index/ser_intensity.jsonl",
+      "encodingFormat": "application/jsonlines",
+      "sha256": "567a82afc298b324830a5f0a513a281ac18e27104705a1c03baead95fd8aa789"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "audio-files-csv",
+      "name": "audio-files-csv",
+      "description": "Per-clip audio inventory from the Kaggle export (one row per released audio file).",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/audio_files.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "e4a9001c7e43c23d81369e24748004ab5da75bd8c121925bac917567b7288c06"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/rad/eval-00000-of-00001.parquet",
+      "name": "data/rad/eval-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/rad/eval-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "3c00f1471052aa66bddeed9e0b3f8de3336f80462f7afe95e26ef56884a212b8"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/rad/train-00000-of-00001.parquet",
+      "name": "data/rad/train-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/rad/train-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "22cf42498ea8994dcb9a8a698a0bbf34b2cbbedb4a28ef7d4c7f736df9531663"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/rsq/eval-00000-of-00001.parquet",
+      "name": "data/rsq/eval-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/rsq/eval-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "c16739d3788f1dce17d8c5ba81a4385e07d079cb48785f79bbf92c98decf01c7"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/rsq/train-00000-of-00001.parquet",
+      "name": "data/rsq/train-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/rsq/train-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "68450bd3c8133406329beb6f5304d6f82b2dcce3528098d0f6c68b4954bc5e82"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_classify/eval-00000-of-00001.parquet",
+      "name": "data/ser_classify/eval-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_classify/eval-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "cf2d509e33194fcac018a875544836117fdea75f794153d8386205535cc673e3"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_classify/train-00000-of-00001.parquet",
+      "name": "data/ser_classify/train-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_classify/train-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "72b822d121e37bbc8a8c85407b7e7c82437725365cae6a5f7e1b315841f569ab"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_classify_text/eval-00000-of-00001.parquet",
+      "name": "data/ser_classify_text/eval-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_classify_text/eval-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "492e10adf3fa2c710910a85693cf0b060bbc76992a66b43cbdb7522288748f17"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_classify_text/train-00000-of-00001.parquet",
+      "name": "data/ser_classify_text/train-00000-of-00001.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_classify_text/train-00000-of-00001.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "48729c0f90fc92734824e848c7fbdc86691c0c782063526a3dfda2d2a23e57ee"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/eval-00000-of-00004.parquet",
+      "name": "data/ser_intensity/eval-00000-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/eval-00000-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "6d13908b23d9ebbc85dcd0b85f0eafe62fafd97e242c5138ee339678e966eac9"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/eval-00001-of-00004.parquet",
+      "name": "data/ser_intensity/eval-00001-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/eval-00001-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "e8b953a38a75b19a60542485114312bccc8e4803fa496ada9af2f9fa8e095f8e"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/eval-00002-of-00004.parquet",
+      "name": "data/ser_intensity/eval-00002-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/eval-00002-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "a0b5b6f0b8d25ce3bba7580c875ae5af00b099fa69c73eb5a91063f518c6a38c"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/eval-00003-of-00004.parquet",
+      "name": "data/ser_intensity/eval-00003-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/eval-00003-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "5a40d199af75115c9608a26eee6f5728504552152d136e272cbf08144d0c22f2"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/train-00000-of-00004.parquet",
+      "name": "data/ser_intensity/train-00000-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/train-00000-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "26dfd68e62225a7ecff267256316932c6d69bd1a10ea8987bc7a4705ded2e5d1"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/train-00001-of-00004.parquet",
+      "name": "data/ser_intensity/train-00001-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/train-00001-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "4fdffd56f243c6b1999780f43e4f99e1c6ae7f3634ab1e26b87d266c29fbca21"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/train-00002-of-00004.parquet",
+      "name": "data/ser_intensity/train-00002-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/train-00002-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "d750ac6ac9316c22fbcb025462af8242f2d2d0d4261f9d92cd6b1311815e857f"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "data/ser_intensity/train-00003-of-00004.parquet",
+      "name": "data/ser_intensity/train-00003-of-00004.parquet",
+      "description": "Hugging Face Parquet shard with embedded audio; raw WAV URLs are in index/.",
+      "contentUrl": "https://huggingface.co/datasets/davidai-labs/AcousticBench/resolve/main/data/ser_intensity/train-00003-of-00004.parquet",
+      "encodingFormat": "application/x-parquet",
+      "sha256": "c235b0de5ef52f3d8748fe3146f156a014a72ff8fefa9f8ce92c5f2bef184a71"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "rad",
+      "name": "rad",
+      "description": "RAD (Relative Acoustic Discrimination): pitch, loudness, tempo, dynamic range; paired clips",
+      "key": {
+        "@id": "rad/example_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "rad/example_id",
+          "name": "example_id",
+          "description": "Stable question ID (UUIDv5); key into questions/ and reference trajectories.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/split",
+          "name": "split",
+          "description": "train or eval: equal halves by question ID, used only for the LoRA diagnostic. Leaderboard uses all rows.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/category",
+          "name": "category",
+          "description": "acoustic-perception, emotion-recognition or speech-quality.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/dimension",
+          "name": "dimension",
+          "description": "Sub-task (RAD: pitch, loudness, tempo, dynamic-range).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/question_set_id",
+          "name": "question_set_id",
+          "description": "Question-set UUID from the harness JSONL.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "question_set_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/question_order",
+          "name": "question_order",
+          "description": "Position within the question set.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "question_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/prompt_text",
+          "name": "prompt_text",
+          "description": "User-turn text parts joined by newlines, including the A/B options (harness rule).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "prompt_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/answer_key",
+          "name": "answer_key",
+          "description": "Correct option letter, A or B.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "answer_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/num_audio_clips",
+          "name": "num_audio_clips",
+          "description": "Number of audio clips in the question (0, 1 or 2).",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "num_audio_clips"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/audio_a_path",
+          "name": "audio_a_path",
+          "description": "Clip A (audio order 0): path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "audio_a_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/audio_a_sha256",
+          "name": "audio_a_sha256",
+          "description": "Clip A (audio order 0): SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "audio_a_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/audio_a_url",
+          "name": "audio_a_url",
+          "description": "Clip A (audio order 0): download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "audio_a_url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/audio_b_path",
+          "name": "audio_b_path",
+          "description": "Clip B (audio order 1): path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "audio_b_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/audio_b_sha256",
+          "name": "audio_b_sha256",
+          "description": "Clip B (audio order 1): SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "audio_b_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rad/audio_b_url",
+          "name": "audio_b_url",
+          "description": "Clip B (audio order 1): download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-rad"
+            },
+            "extract": {
+              "column": "audio_b_url"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "rsq",
+      "name": "rsq",
+      "description": "RSQ (Relative Speech Quality): clean versus degraded WebRTC speech, 17 languages; paired clips",
+      "key": {
+        "@id": "rsq/example_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/example_id",
+          "name": "example_id",
+          "description": "Stable question ID (UUIDv5); key into questions/ and reference trajectories.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/split",
+          "name": "split",
+          "description": "train or eval: equal halves by question ID, used only for the LoRA diagnostic. Leaderboard uses all rows.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/category",
+          "name": "category",
+          "description": "acoustic-perception, emotion-recognition or speech-quality.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/dimension",
+          "name": "dimension",
+          "description": "Sub-task (RAD: pitch, loudness, tempo, dynamic-range).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/question_set_id",
+          "name": "question_set_id",
+          "description": "Question-set UUID from the harness JSONL.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "question_set_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/question_order",
+          "name": "question_order",
+          "description": "Position within the question set.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "question_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/prompt_text",
+          "name": "prompt_text",
+          "description": "User-turn text parts joined by newlines, including the A/B options (harness rule).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "prompt_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/answer_key",
+          "name": "answer_key",
+          "description": "Correct option letter, A or B.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "answer_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/num_audio_clips",
+          "name": "num_audio_clips",
+          "description": "Number of audio clips in the question (0, 1 or 2).",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "num_audio_clips"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/audio_a_path",
+          "name": "audio_a_path",
+          "description": "Clip A (audio order 0): path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "audio_a_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/audio_a_sha256",
+          "name": "audio_a_sha256",
+          "description": "Clip A (audio order 0): SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "audio_a_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/audio_a_url",
+          "name": "audio_a_url",
+          "description": "Clip A (audio order 0): download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "audio_a_url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/audio_b_path",
+          "name": "audio_b_path",
+          "description": "Clip B (audio order 1): path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "audio_b_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/audio_b_sha256",
+          "name": "audio_b_sha256",
+          "description": "Clip B (audio order 1): SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "audio_b_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "rsq/audio_b_url",
+          "name": "audio_b_url",
+          "description": "Clip B (audio order 1): download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-rsq"
+            },
+            "extract": {
+              "column": "audio_b_url"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "ser_classify",
+      "name": "ser_classify",
+      "description": "SER-Classify: two-way emotion classification of one voice-acted clip",
+      "key": {
+        "@id": "ser_classify/example_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/example_id",
+          "name": "example_id",
+          "description": "Stable question ID (UUIDv5); key into questions/ and reference trajectories.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/split",
+          "name": "split",
+          "description": "train or eval: equal halves by question ID, used only for the LoRA diagnostic. Leaderboard uses all rows.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/category",
+          "name": "category",
+          "description": "acoustic-perception, emotion-recognition or speech-quality.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/dimension",
+          "name": "dimension",
+          "description": "Sub-task (RAD: pitch, loudness, tempo, dynamic-range).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/question_set_id",
+          "name": "question_set_id",
+          "description": "Question-set UUID from the harness JSONL.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "question_set_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/question_order",
+          "name": "question_order",
+          "description": "Position within the question set.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "question_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/prompt_text",
+          "name": "prompt_text",
+          "description": "User-turn text parts joined by newlines, including the A/B options (harness rule).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "prompt_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/answer_key",
+          "name": "answer_key",
+          "description": "Correct option letter, A or B.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "answer_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/num_audio_clips",
+          "name": "num_audio_clips",
+          "description": "Number of audio clips in the question (0, 1 or 2).",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "num_audio_clips"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/audio_a_path",
+          "name": "audio_a_path",
+          "description": "The single clip: path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "audio_a_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/audio_a_sha256",
+          "name": "audio_a_sha256",
+          "description": "The single clip: SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "audio_a_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify/audio_a_url",
+          "name": "audio_a_url",
+          "description": "The single clip: download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify"
+            },
+            "extract": {
+              "column": "audio_a_url"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "ser_classify_text",
+      "name": "ser_classify_text",
+      "description": "SER-Classify-Text: transcript-only diagnostic (gpt-4o-transcribe), no audio, excluded from aggregates",
+      "key": {
+        "@id": "ser_classify_text/example_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/example_id",
+          "name": "example_id",
+          "description": "Stable question ID (UUIDv5); key into questions/ and reference trajectories.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/split",
+          "name": "split",
+          "description": "train or eval: equal halves by question ID, used only for the LoRA diagnostic. Leaderboard uses all rows.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/category",
+          "name": "category",
+          "description": "acoustic-perception, emotion-recognition or speech-quality.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/dimension",
+          "name": "dimension",
+          "description": "Sub-task (RAD: pitch, loudness, tempo, dynamic-range).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/question_set_id",
+          "name": "question_set_id",
+          "description": "Question-set UUID from the harness JSONL.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "question_set_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/question_order",
+          "name": "question_order",
+          "description": "Position within the question set.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "question_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/prompt_text",
+          "name": "prompt_text",
+          "description": "User-turn text parts joined by newlines, including the A/B options (harness rule).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "prompt_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/answer_key",
+          "name": "answer_key",
+          "description": "Correct option letter, A or B.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "answer_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_classify_text/num_audio_clips",
+          "name": "num_audio_clips",
+          "description": "Number of audio clips in the question (0, 1 or 2).",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_classify_text"
+            },
+            "extract": {
+              "column": "num_audio_clips"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "ser_intensity",
+      "name": "ser_intensity",
+      "description": "SER-Intensity: which of two takes (same speaker and script) is more emotionally intense",
+      "key": {
+        "@id": "ser_intensity/example_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/example_id",
+          "name": "example_id",
+          "description": "Stable question ID (UUIDv5); key into questions/ and reference trajectories.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/split",
+          "name": "split",
+          "description": "train or eval: equal halves by question ID, used only for the LoRA diagnostic. Leaderboard uses all rows.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/category",
+          "name": "category",
+          "description": "acoustic-perception, emotion-recognition or speech-quality.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/dimension",
+          "name": "dimension",
+          "description": "Sub-task (RAD: pitch, loudness, tempo, dynamic-range).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/question_set_id",
+          "name": "question_set_id",
+          "description": "Question-set UUID from the harness JSONL.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "question_set_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/question_order",
+          "name": "question_order",
+          "description": "Position within the question set.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "question_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/prompt_text",
+          "name": "prompt_text",
+          "description": "User-turn text parts joined by newlines, including the A/B options (harness rule).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "prompt_text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/answer_key",
+          "name": "answer_key",
+          "description": "Correct option letter, A or B.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "answer_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/num_audio_clips",
+          "name": "num_audio_clips",
+          "description": "Number of audio clips in the question (0, 1 or 2).",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "num_audio_clips"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/audio_a_path",
+          "name": "audio_a_path",
+          "description": "Clip A (audio order 0): path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "audio_a_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/audio_a_sha256",
+          "name": "audio_a_sha256",
+          "description": "Clip A (audio order 0): SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "audio_a_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/audio_a_url",
+          "name": "audio_a_url",
+          "description": "Clip A (audio order 0): download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "audio_a_url"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/audio_b_path",
+          "name": "audio_b_path",
+          "description": "Clip B (audio order 1): path relative to the repository root.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "audio_b_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/audio_b_sha256",
+          "name": "audio_b_sha256",
+          "description": "Clip B (audio order 1): SHA-256 of the audio file.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "audio_b_sha256"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ser_intensity/audio_b_url",
+          "name": "audio_b_url",
+          "description": "Clip B (audio order 1): download URL (requires an approved account).",
+          "dataType": "sc:URL",
+          "source": {
+            "fileObject": {
+              "@id": "index-ser_intensity"
+            },
+            "extract": {
+              "column": "audio_b_url"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "questions",
+      "name": "questions",
+      "description": "All 3,800 rows of questions/acousticbench_all.jsonl as read by the harness. Audio parts live in messages[].content[] (type audio_file, path, order, sha256).",
+      "key": {
+        "@id": "questions/example_id"
+      },
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "questions/example_id",
+          "name": "example_id",
+          "description": "Question ID.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/split",
+          "name": "split",
+          "description": "train or eval.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "split"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/category",
+          "name": "category",
+          "description": "Task family category.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/dimension",
+          "name": "dimension",
+          "description": "Sub-task.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/answer_key",
+          "name": "answer_key",
+          "description": "A or B.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "answer_key"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/question_set_id",
+          "name": "question_set_id",
+          "description": "question_set.id",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "question_set"
+            },
+            "transform": {
+              "jsonPath": "id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/task",
+          "name": "task",
+          "description": "question_set.slice: rad, rsq, ser_classify, ser_classify_text or ser_intensity.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "question_set"
+            },
+            "transform": {
+              "jsonPath": "slice"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "questions/question_order",
+          "name": "question_order",
+          "description": "question_set.question_order",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "questions-all"
+            },
+            "extract": {
+              "column": "question_set"
+            },
+            "transform": {
+              "jsonPath": "question_order"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "audio_files",
+      "name": "audio_files",
+      "description": "Per-clip audio inventory (audio_files.csv), one record per released audio file.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/example_id",
+          "name": "example_id",
+          "description": "audio_files.csv column `example_id`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "example_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/task",
+          "name": "task",
+          "description": "audio_files.csv column `task`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "task"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/question_order",
+          "name": "question_order",
+          "description": "audio_files.csv column `question_order`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "question_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/category",
+          "name": "category",
+          "description": "audio_files.csv column `category`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/dimension",
+          "name": "dimension",
+          "description": "audio_files.csv column `dimension`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "dimension"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/clip_id",
+          "name": "clip_id",
+          "description": "audio_files.csv column `clip_id`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "clip_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/clip_label",
+          "name": "clip_label",
+          "description": "audio_files.csv column `clip_label`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "clip_label"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/clip_order",
+          "name": "clip_order",
+          "description": "audio_files.csv column `clip_order`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "clip_order"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/released_path",
+          "name": "released_path",
+          "description": "audio_files.csv column `released_path`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "released_path"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/audio_category",
+          "name": "audio_category",
+          "description": "audio_files.csv column `audio_category`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "audio_category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/source_language",
+          "name": "source_language",
+          "description": "audio_files.csv column `source_language`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "source_language"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "audio_files/target_emotion",
+          "name": "target_emotion",
+          "description": "audio_files.csv column `target_emotion`.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "audio-files-csv"
+            },
+            "extract": {
+              "column": "target_emotion"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "rai:dataLimitations": "Two-choice judgments have 50% chance accuracy and do not establish general acoustic competence. SER uses scripted English voice acting, not spontaneous emotion. RSQ uses WebRTC recordings, with 819/1,000 pairs labeled English, and may not represent other channels. Dynamic-range items use synthetic tonal carriers. Question-ID halves are not speaker-disjoint: speakers and, for some RAD items, identical audio occur in both halves. The paper reports separate overlap analyses and speaker-disjoint retraining. Human accuracy is rating-weighted, with uneven coverage: 5,134 ratings in total, including 100 ratings for 200 dynamic-range questions. External transfer is uneven. The data has not been validated for clinical, hiring, forensic or surveillance decisions. Audio uses native sample rates and encodings; see README.md.",
+  "rai:dataBiases": "SER is entirely English and performed by paid voice actors. RSQ language pair counts are en 819, bn 69, ko 52, zh 24, hi 21, ja 4, and ar, ru, vi, id, pt, tr, th, de, it, fr, tl one each. SER-Classify emotion counts are Fear 133, Happiness 97, Anger 92, Surprise 86, Sadness 69, Sarcasm 62, Neutral 61. Foils are constrained and have seven exceptions to the predominant pairings; this is binary discrimination, not seven-way recognition. Full-task A/B positions are balanced; individual emotion categories and train/eval halves need not be. Construction-time screening favors clear emotional delivery. Residual lexical and foil-related shortcuts remain: Gemini-3.1-Pro reaches 55.1% on transcript-only classification. Contributor and rater demographics are not documented in this release, so demographic representativeness cannot be assessed. Synthetic stimuli reflect the chosen signal families and rendering assets.",
+  "rai:personalSensitiveInformation": "Human voices can identify contributors and reveal or suggest age, gender, accent, language or region. The public inventory contains task, language and emotion metadata, not worker, submission or conference identifiers. The paper reports informed consent, payment above applicable local minimum wages, and ASR plus LLM screening to discard recordings with personally identifying content. This does not make voices anonymous or establish that every incidental disclosure was removed. The authors report no IRB approval because the work was outside an institution requiring it; internal ethics guidelines were followed. Manual access approval and restricted intended use are planned. The included Data Use Agreement governs permitted use and withdrawal requests.",
+  "rai:dataUseCases": "Measures acoustic discrimination, vocal emotion classification and intensity, and relative speech quality in LALMs. Evidence includes controlled RAD transformations, human validation of SER, RSQ artifact annotation, balanced answer positions, and a separate human reference (93.5% overall). The ASR cascade scores 51.5% overall, providing evidence of limited transcript-only performance rather than proving every item requires audio. The question-ID halves support the paper's task-specific adaptation diagnostics on Kimi-Audio, MOSS-Audio and Qwen3-Omni. Those results do not establish performance on unseen speakers or external datasets by themselves. The public agreement prohibits all training, fine-tuning and optimization. Split names record historical experiment membership, not a license grant; the agreement does not permit recipients to reproduce the paper's fine-tuning experiments, and the training prohibition is not available for license. Deployed decisions about people are not validated uses.",
+  "rai:dataSocialImpact": "The benchmark can support more accurate evaluation of acoustic perception and research on accessibility and audio quality. Recordings could be misused for voice cloning, deepfakes, speaker identification or identity recovery. Emotion scores could be misinterpreted as evidence for monitoring people's emotions. Language imbalance and acted speech limit broader claims. Planned mitigations are manual access review, consent-aligned research-use restrictions, PII screening, and withholding contributor provenance identifiers. These measures reduce risks but do not remove them. The selected Data Use Agreement is included.",
+  "rai:hasSyntheticData": true,
+  "rai:dataCollection": "Three sources: paid contributors recording scripted English emotional speech locally; paid contributors in two-speaker WebRTC conversations across 17 languages; and synthetic tonal, noise-like and rhythmic signals plus MIDI-rendered instrument phrases. Voice actors recorded normal and strong emotional deliveries of the same script. Collection dates, recruitment details, devices and precise synthetic asset versions are not documented in this package. No external evaluation dataset is bundled here.",
+  "rai:dataCollectionType": [
+    "Manual Human Curated",
+    "Synthetic Data"
+  ],
+  "rai:dataPreprocessingProtocol": "RAD applies pitch, gain, time-stretch or envelope changes; speech-pitch pairs instead use natural utterances selected by measured fundamental-frequency difference, with a six-semitone minimum. Dynamic-range pairs use sinusoidal amplitude modulation of synthetic tonal carriers. SER-Classify uses strong takes and documented emotion foils; SER-Intensity pairs same-speaker, same-script normal and strong takes. RSQ retains degraded spans overlapping speech and matches clean references by duration and transcript length, preserving same-language and VAD constraints and excluding duplicate or same-speaker pairs. A/B answers are balanced within each full task. The transcript-only diagnostic uses gpt-4o-transcribe. This packaging step preserves question/audio bytes and generates Parquet copies, flat indexes and checksums; no audio normalization or resampling is performed.",
+  "rai:dataAnnotationProtocol": "Construction and held-out evaluation use separate listener pools. SER raters verify emotion and relative intensity from audio alone. RSQ annotators mark artifacts and clean spans in 15-second chunks. RAD answer keys are programmatic. Held-out listeners answer randomized questions with replay and no correctness feedback; their judgments do not filter the benchmark. Observed agreement / nominal Krippendorff alpha: RAD 98.0% / .959; RSQ 90.9% / .819; SER-Intensity 87.0% / .742; SER-Classify 82.9% / .688. Agreement is consensus, not answer-key accuracy. Exact construction consensus thresholds are not documented here. See paper sections Quality Control and Evaluation, Annotation Platform and Procedure, and Human accuracy breakdown.",
+  "rai:dataAnnotationPlatform": "Custom web annotation platform described in the paper appendix, Annotation Platform and Procedure.",
+  "rai:annotationsPerItem": "Held-out rating counts / questions: RAD 1,036/1,200; SER-Classify 2,433/600; SER-Intensity 477/400; RSQ 1,188/1,000. These are averages, not a guarantee of coverage per question. Items in the agreement analysis received three independent ratings on average. Construction-time annotation counts are not specified here.",
+  "rai:annotatorDemographics": "Aggregate annotator demographics are not documented in this package.",
+  "rai:machineAnnotationTools": "librosa for speech-pitch fundamental-frequency measurement; gpt-4o-transcribe for transcript-only diagnostic. Names and versions of the PII-screening ASR and LLM are not specified in the paper.",
+  "rai:dataReleaseMaintenancePlan": "Maintainer contact: research@withdavid.ai. Proposed first version: 1.0.0 in davidai-labs/AcousticBench. No publication date or DOI has been assigned. The full owner-selected Data Use Agreement is included. Access is subject to manual review. The Data Use Agreement specifies deletion and withdrawal obligations. Corrections should preserve versioned records of changed question IDs and answer keys.",
+  "prov:wasDerivedFrom": [
+    {
+      "@id": "urn:acousticbench:source:voice-acting",
+      "prov:label": "Original English voice-acting sessions collected by David AI Labs; contributor agreements are not publicly distributed."
+    },
+    {
+      "@id": "urn:acousticbench:source:webrtc",
+      "prov:label": "Original WebRTC conversations collected by David AI Labs; contributor agreements are not publicly distributed."
+    },
+    {
+      "@id": "urn:acousticbench:source:synthetic",
+      "prov:label": "Procedural tonal, noise-like and rhythmic sources, and MIDI-rendered instrument phrases. Exact MIDI/soundfont identifiers, licenses and generator seeds are not established in the available release records."
+    }
+  ],
+  "prov:wasGeneratedBy": [
+    {
+      "@type": "prov:Activity",
+      "@id": "urn:acousticbench:activity:collection",
+      "prov:label": "collection",
+      "sc:description": "Three sources: paid contributors recording scripted English emotional speech locally; paid contributors in two-speaker WebRTC conversations across 17 languages; and synthetic tonal, noise-like and rhythmic signals plus MIDI-rendered instrument phrases. Voice actors recorded normal and strong emotional deliveries of the same script. Collection dates, recruitment details, devices and precise synthetic asset versions are not documented in this package. No external evaluation dataset is bundled here.",
+      "prov:wasAttributedTo": [
+        {
+          "@type": "prov:Organization",
+          "@id": "urn:acousticbench:agent:david-ai-labs",
+          "prov:label": "David AI Labs"
+        }
+      ]
+    },
+    {
+      "@type": "prov:Activity",
+      "@id": "urn:acousticbench:activity:preprocessing",
+      "prov:label": "preprocessing",
+      "sc:description": "RAD applies pitch, gain, time-stretch or envelope changes; speech-pitch pairs instead use natural utterances selected by measured fundamental-frequency difference, with a six-semitone minimum. Dynamic-range pairs use sinusoidal amplitude modulation of synthetic tonal carriers. SER-Classify uses strong takes and documented emotion foils; SER-Intensity pairs same-speaker, same-script normal and strong takes. RSQ retains degraded spans overlapping speech and matches clean references by duration and transcript length, preserving same-language and VAD constraints and excluding duplicate or same-speaker pairs. A/B answers are balanced within each full task. The transcript-only diagnostic uses gpt-4o-transcribe. This packaging step preserves question/audio bytes and generates Parquet copies, flat indexes and checksums; no audio normalization or resampling is performed.",
+      "prov:wasAttributedTo": [
+        {
+          "@type": "prov:Organization",
+          "@id": "urn:acousticbench:agent:david-ai-labs",
+          "prov:label": "David AI Labs"
+        }
+      ]
+    },
+    {
+      "@type": "prov:Activity",
+      "@id": "urn:acousticbench:activity:annotation",
+      "prov:label": "annotation",
+      "sc:description": "Construction and held-out evaluation use separate listener pools. SER raters verify emotion and relative intensity from audio alone. RSQ annotators mark artifacts and clean spans in 15-second chunks. RAD answer keys are programmatic. Held-out listeners answer randomized questions with replay and no correctness feedback; their judgments do not filter the benchmark. Observed agreement / nominal Krippendorff alpha: RAD 98.0% / .959; RSQ 90.9% / .819; SER-Intensity 87.0% / .742; SER-Classify 82.9% / .688. Agreement is consensus, not answer-key accuracy. Exact construction consensus thresholds are not documented here. See paper sections Quality Control and Evaluation, Annotation Platform and Procedure, and Human accuracy breakdown.",
+      "prov:wasAttributedTo": [
+        {
+          "@type": "prov:Organization",
+          "@id": "urn:acousticbench:agent:david-ai-labs",
+          "prov:label": "David AI Labs"
+        }
+      ]
+    },
+    {
+      "@type": "prov:Activity",
+      "@id": "urn:acousticbench:activity:screening",
+      "prov:label": "screening",
+      "sc:description": "The paper reports ASR/LLM PII screening and audio-only validation. Source identifiers are excluded from this package.",
+      "prov:wasAttributedTo": [
+        {
+          "@type": "prov:Organization",
+          "@id": "urn:acousticbench:agent:david-ai-labs",
+          "prov:label": "David AI Labs"
+        }
+      ]
+    }
+  ]
+}
